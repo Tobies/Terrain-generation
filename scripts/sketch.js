@@ -11,7 +11,6 @@ var startLoc;
 var endLoc;
 var grid = [];
 let mapGraphics;
-//"freq: " + layer1.value() + ", octaves: " + 0.8 + ", aplittude: " + layer3.value() + ", elevation: " + elevation.value())
 function setup ()
 {
     createCanvas(400, 400);
@@ -71,44 +70,44 @@ function getColor(c)
     var newC = []
     if (c < 0.1)
     {
-        newC = {r:15, g:41, b:81};
+        newC = {r:15, g:41, b:81, a:255};
     }
     else if (c < 0.2)
     {
-        newC = {r:17, g:47, b:93};
+        newC = {r:17, g:47, b:93, a:255};
     }
     else if (c < 0.3)
     {
-        newC = {r:22, g:60, b:113};
+        newC = {r:22, g:60, b:113, a:255};
     }
     else if (c < 0.4)
     {
-        newC = {r:28, g:77, b:141};
+        newC = {r:28, g:77, b:141, a:255};
     }
     else if (c < 0.5)
     {
-        newC = {r:246, g:219, b:133};
+        newC = {r:246, g:219, b:133, a:255};
     }
     else if (c < 0.6)
     {
-        newC = {r:153, g:187, b:101};
+        newC = {r:153, g:187, b:101, a:255};
     }
     else if (c < 0.7)
     {
-        newC = {r:103, g:154, b:24};
+        newC = {r:103, g:154, b:24, a:255};
     }
     else if (c < 0.8)
     {
-        newC = {r:65, g:126, b:0};
+        newC = {r:65, g:126, b:0, a:255};
     }
     else if (c < 0.9)
     {
-        newC = {r:35, g:35, b:35};
+        newC = {r:35, g:35, b:35, a:255};
     }
     else
     {
         
-        newC = {r: 60, g:60, b:60};
+        newC = {r: 60, g:60, b:60, a:255};
     }
     return newC;
 }
@@ -128,7 +127,7 @@ function generateTerrain(l1, l2, l3, el)
             var usedY = y * 0.03;
             var noiseValue = pow((l1 * noise(1 * usedX, 1 * usedY)) + (l2 * noise(2 * usedX, 2 * usedY)) + (l3 * noise(4 * usedX, 2 * usedY)), el);
             var c = getColor(noiseValue);
-            mapGraphics.stroke(c.r, c.g, c.b);
+            mapGraphics.stroke(c.r, c.g, c.b, c.a);
             mapGraphics.point(x, y);
         }
     }
@@ -136,6 +135,7 @@ function generateTerrain(l1, l2, l3, el)
 }
 function draw()
 {
+    background(220);
     image(mapGraphics, 0, 0);
 
 }
